@@ -7,10 +7,17 @@ import * as S from './styles';
 import { ReactComponent as DeleteIcon } from '../../assets/icon-cross.svg';
 import { ModesContext } from '../../context/ModesContext';
 import { ActivitiesContext } from '../../context/ActivityContext';
+import { deleteActivity } from '../../services/deleteActivity';
 
 export function ActivityList() {
-  const {mode, setMode} = useContext(ModesContext);
+  const {mode} = useContext(ModesContext);
   const {activities, setActivities} = useContext(ActivitiesContext);
+
+  const handleDelete = async (id: string) => {
+    await deleteActivity(id).then(() => {
+      getActivities().then(response => setActivities(response));
+    });
+  };
 
   useEffect(() => {
     getActivities().then((response) => {
@@ -24,9 +31,11 @@ export function ActivityList() {
         <S.List>
           {
             activities ? activities.map((activity) => (
-              <Activity key={activity._id} status={activity.status}>
+              <Activity key={activity._id} status={activity.status} id={activity._id}>
                 <S.Text>{activity.message}</S.Text>
-                <DeleteIcon stroke={mode ? 'hsl(233, 14%, 35%)' : 'hsl(235, 19%, 35%)'}/>
+                <DeleteIcon
+                  stroke={mode ? 'hsl(233, 14%, 35%)' : 'hsl(235, 19%, 35%)'}
+                  onClick={() => handleDelete(activity._id)}/>
               </Activity>
             )) : (
               <Activity>
