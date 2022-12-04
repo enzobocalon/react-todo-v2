@@ -17,7 +17,7 @@ export const GlobalStyle = createGlobalStyle`
     height: 100vh;
     background-color: hsl(235, 21%, 11%);
 
-    input {
+    input, button {
       font-family: 'Josefin Sans', sans-serif;
     }
   }
