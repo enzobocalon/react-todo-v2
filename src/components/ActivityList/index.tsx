@@ -36,7 +36,7 @@ export function ActivityList() {
       return;
     }
 
-    await deleteActivity(id).then(() => {
+    deleteActivity(id).then(() => {
       getActivities().then(response => setActivities(response));
     });
   };
@@ -50,6 +50,17 @@ export function ActivityList() {
         }
       });
       setCounter(count);
+    }
+  };
+
+  const clearCompleted = () => {
+    if (activities) {
+      activities.map(activity => {
+        if (activity.isDeletable && activity.status === 1) {
+          deleteActivity(activity._id);
+        }
+      });
+      getActivities().then(response => setActivities(response));
     }
   };
 
@@ -117,7 +128,7 @@ export function ActivityList() {
           </S.FooterContent>
 
           <S.FooterContent>
-            <S.Button>
+            <S.Button onClick={clearCompleted}>
               Clear Completed
             </S.Button>
           </S.FooterContent>
