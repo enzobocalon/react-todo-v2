@@ -24,7 +24,7 @@ function Activity({children, id, status, borderRadius}: Props) {
       if (status === 0) {
         updateStatus(id, 1);
         setStatusController(1);
-        // Its used to control de count when user clicks to check
+        // Its used to control the count when user clicks to check
         const updatedStatus = activities?.map(data => {
           if (data._id === id) {
             return {...data, status: 1};
@@ -39,7 +39,7 @@ function Activity({children, id, status, borderRadius}: Props) {
       if (status === 1) {
         updateStatus(id, 0);
         setStatusController(0);
-        // Its used to control de count when user clicks to uncheck
+        // Its used to control the count when user clicks to uncheck
         const updatedStatus = activities?.map(data => {
           if (data._id === id) {
             return {...data, status: 0};
