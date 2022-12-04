@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 interface Props {
   borderRadius?: number;
+  status?: boolean;
 }
 
 export const Container = styled.div<Props>`
@@ -15,13 +16,39 @@ export const Container = styled.div<Props>`
   }
 `;
 
-export const Icon = styled.div`
+export const IconBackground = styled.div<Props>`
+  min-width: 30px;
+  min-height: 30px;
+  border-radius: 50%;
+  margin: 0 0 0 12px;
+  background-color: hsl(233, 14%, 35%);
+  background-position: 10px;
+  transition: all .3s ease;
+
+  &:hover {
+    background-image: ${props => props.status ? 'linear-gradient(90deg,hsl(235,24%,19%), hsl(235,24%,19%))' : 'linear-gradient(90deg,hsl(192, 100%, 67%), hsl(280, 87%, 65%))'};
+    background-position: 0px;
+    transition: all .3s ease;
+  }
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const Icon = styled.div<Props>`
   min-width: 28px;
   min-height: 28px;
-  margin: 0 0 0 12px;
-  border: 1px solid hsl(233, 14%, 35%);
+  background-image: ${props => props.status ? 'linear-gradient(90deg,hsl(192, 100%, 67%), hsl(280, 87%, 65%))' : 'linear-gradient(90deg,hsl(235,24%,19%), hsl(235,24%,19%))'};
   border-radius: 50%;
   cursor: pointer;
+  background-color: hsl(235,24%,19%);
+  transition: all .3s ease;
+
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const Content = styled.div`
