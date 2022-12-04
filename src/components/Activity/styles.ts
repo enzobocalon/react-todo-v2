@@ -53,4 +53,13 @@ export const Icon = styled.div<Props>`
 
 export const Content = styled.div`
   flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  svg {
+    max-height: 18px;
+    max-width: 18px;
+    margin-right: 12px;
+  }
 `;
