@@ -1,10 +1,18 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+interface Props {
+  borderRadius?: number;
+}
+
+export const Container = styled.div<Props>`
   background-color: hsl(235, 24%, 19%);
-  border-radius: 8px;
+  border-radius: ${props => props.borderRadius ? `${props.borderRadius}px` : '0'};
   display: flex;
   align-items: center;
+
+  &:not(:last-of-type) {
+    border-bottom: 1px solid hsl(237, 14%, 26%);
+  }
 `;
 
 export const Icon = styled.div`

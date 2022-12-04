@@ -5,11 +5,12 @@ import lightMode from '../../assets/icon-cross.svg';
 
 interface Props {
   children: React.ReactNode
+  borderRadius?: number
 }
 
-function Activity({children}: Props) {
+function Activity({children, borderRadius}: Props) {
   return (
-    <S.Container>
+    <S.Container borderRadius={borderRadius}>
       <S.Icon>
         {/* Conditional Rendering to render check and cross */}
       </S.Icon>
