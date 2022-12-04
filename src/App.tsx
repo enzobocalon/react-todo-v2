@@ -1,5 +1,6 @@
 import { ActivityList } from './components/ActivityList';
 import { Header } from './components/Header';
+import ModesProvider from './context/ModesContext';
 import { GlobalStyle } from './Global';
 
 function App() {
@@ -7,9 +8,11 @@ function App() {
 
   return (
     <>
-      <Header />
-      <ActivityList />
-      <GlobalStyle />
+      <ModesProvider>
+        <Header />
+        <ActivityList />
+        <GlobalStyle />
+      </ModesProvider>
     </>
   );
 }
