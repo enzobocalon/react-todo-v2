@@ -1,11 +1,16 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { getActivities } from '../../services/getActivities';
 import { Activity as ActivityType } from '../../types/Activity';
 import Activity from '../Activity';
 import * as S from './styles';
 
+import { ReactComponent as DeleteIcon } from '../../assets/icon-cross.svg';
+import { ModesContext } from '../../context/ModesContext';
+import { ActivitiesContext } from '../../context/ActivityContext';
+
 export function ActivityList() {
-  const [activities, setActivities] = useState<ActivityType[] | null>(null);
+  const {mode, setMode} = useContext(ModesContext);
+  const {activities, setActivities} = useContext(ActivitiesContext);
 
   useEffect(() => {
     getActivities().then((response) => {
@@ -21,6 +26,7 @@ export function ActivityList() {
             activities ? activities.map((activity) => (
               <Activity key={activity._id} status={activity.status}>
                 <S.Text>{activity.message}</S.Text>
+                <DeleteIcon stroke={mode ? 'hsl(233, 14%, 35%)' : 'hsl(235, 19%, 35%)'}/>
               </Activity>
             )) : (
               <Activity>
