@@ -1,4 +1,4 @@
-import { useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { getActivities } from '../../services/getActivities';
 import { Activity as ActivityType } from '../../types/Activity';
 import * as S from './styles';
@@ -71,7 +71,10 @@ export function ActivityList() {
         <S.List>
           {
             displayActivity ? displayActivity.map((activity) => (
-              <Activity key={activity._id} status={activity.status} id={activity._id}>
+              <Activity
+                key={activity._id}
+                status={activity.status}
+                id={activity._id}>
                 <S.Text>{activity.message}</S.Text>
                 <DeleteIcon
                   stroke={mode ? 'hsl(233, 14%, 35%)' : 'hsl(235, 19%, 35%)'}
