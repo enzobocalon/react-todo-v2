@@ -4,7 +4,8 @@ import * as S from './styles';
 import lightMode from '../../assets/icon-cross.svg';
 import check from '../../assets/icon-check.svg';
 import { updateStatus } from '../../services/updateActivity';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { ActivitiesContext } from '../../context/ActivityContext';
 
 
 interface Props {
@@ -16,18 +17,37 @@ interface Props {
 
 function Activity({children, id, status, borderRadius}: Props) {
   const [statusController, setStatusController] = useState(status);
+  const {activities, setActivities} = useContext(ActivitiesContext);
 
   const handleStatusUpdate = async () => {
     if (id) {
       if (status === 0) {
         updateStatus(id, 1);
         setStatusController(1);
+        // Its used to control de count when user clicks to check
+        const updatedStatus = activities?.map(data => {
+          if (data._id === id) {
+            return {...data, status: 1};
+          }
+
+          return data;
+        });
+        setActivities(updatedStatus!);
         return;
       }
 
       if (status === 1) {
         updateStatus(id, 0);
         setStatusController(0);
+        // Its used to control de count when user clicks to uncheck
+        const updatedStatus = activities?.map(data => {
+          if (data._id === id) {
+            return {...data, status: 0};
+          }
+
+          return data;
+        });
+        setActivities(updatedStatus!);
         return;
       }
     }
