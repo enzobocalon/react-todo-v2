@@ -42,7 +42,7 @@ export const Input = styled.input`
   padding: 1rem;
   background-color: transparent;
   border: none;
-  color: white;
+  color: hsl(234, 39%, 85%);
   outline: none;
   font-size: 1rem;
 `;
