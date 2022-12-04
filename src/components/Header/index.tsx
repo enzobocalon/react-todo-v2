@@ -15,7 +15,7 @@ export function Header() {
           <img src={lightMode} />
         </S.Logo>
 
-        <Activity>
+        <Activity borderRadius={8}>
           <S.Input placeholder='Create a new todo...'/>
         </Activity>
       </S.ContentSection>

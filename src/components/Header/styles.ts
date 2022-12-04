@@ -16,7 +16,7 @@ export const Container = styled.header`
 export const ContentSection = styled.section`
   max-width: 768px;
   width: 100%;
-  padding: 20px;
+  padding: 24px;
   flex: 1;
 `;
 
