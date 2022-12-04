@@ -44,8 +44,7 @@ export const Icon = styled.div<Props>`
   cursor: pointer;
   background-color: hsl(235,24%,19%);
   transition: all .3s ease;
-
-
+  
   display: flex;
   align-items: center;
   justify-content: center;
@@ -61,5 +60,6 @@ export const Content = styled.div`
     max-height: 18px;
     max-width: 18px;
     margin-right: 12px;
+    cursor: pointer;
   }
 `;

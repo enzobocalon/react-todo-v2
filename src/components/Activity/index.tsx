@@ -1,22 +1,46 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import * as S from './styles';
 
 import lightMode from '../../assets/icon-cross.svg';
 import check from '../../assets/icon-check.svg';
+import { updateStatus } from '../../services/updateActivity';
+import { useState } from 'react';
 
 
 interface Props {
   children: React.ReactNode,
   status?: number,
-  borderRadius?: number
+  borderRadius?: number,
+  id?: string,
 }
 
-function Activity({children, status, borderRadius}: Props) {
+function Activity({children, id, status, borderRadius}: Props) {
+  const [statusController, setStatusController] = useState(status);
+
+  const handleStatusUpdate = async () => {
+    if (id) {
+      if (status === 0) {
+        updateStatus(id, 1);
+        setStatusController(1);
+        return;
+      }
+
+      if (status === 1) {
+        updateStatus(id, 0);
+        setStatusController(0);
+        return;
+      }
+    }
+  };
+
   return (
     <S.Container borderRadius={borderRadius}>
-      <S.IconBackground status={status === 1 ? true : false}>
-        <S.Icon status={status === 1 ? true : false}>
+      <S.IconBackground
+        status={statusController === 1 ? true : false}
+        onClick={handleStatusUpdate}>
+        <S.Icon status={statusController === 1 ? true : false}>
           {
-            status === 1 && (
+            statusController === 1 && (
               <img src={check} />
             )
           }
