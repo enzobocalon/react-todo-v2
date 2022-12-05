@@ -77,8 +77,8 @@ export function ActivityList() {
   }, []);
 
   return (
-    <S.Container>
-      <S.ListContainer>
+    <S.Container mode={mode}>
+      <S.ListContainer mode={mode}>
         <S.List>
           {
             displayActivity ? displayActivity.map((activity) => (
@@ -86,7 +86,7 @@ export function ActivityList() {
                 key={activity._id}
                 status={activity.status}
                 id={activity._id}>
-                <S.Text>{activity.message}</S.Text>
+                <S.Text mode={mode}>{activity.message}</S.Text>
                 <DeleteIcon
                   stroke={mode ? 'hsl(233, 14%, 35%)' : 'hsl(235, 19%, 35%)'}
                   onClick={() => handleDelete(activity._id, activity.isDeletable)}/>
@@ -99,7 +99,7 @@ export function ActivityList() {
           }
         </S.List>
 
-        <S.Footer>
+        <S.Footer mode={mode}>
           <S.FooterContent>
             <span>{counter} items left</span>
           </S.FooterContent>
@@ -108,27 +108,31 @@ export function ActivityList() {
             <S.Button
               active={active === 0 ? true : false}
               weight='700'
-              onClick={() => handleActive(0)}>
+              onClick={() => handleActive(0)}
+              mode={mode}>
               All
             </S.Button>
 
             <S.Button
               active={active === 1 ? true : false}
               weight='700'
-              onClick={() => handleActive(1)}>
+              onClick={() => handleActive(1)}
+              mode={mode}>
               Active
             </S.Button>
 
             <S.Button
               active={active === 2 ? true : false}
               weight='700'
-              onClick={() => handleActive(2)}>
+              onClick={() => handleActive(2)}
+              mode={mode}>
               Completed
             </S.Button>
           </S.FooterContent>
 
           <S.FooterContent>
-            <S.Button onClick={clearCompleted}>
+            <S.Button onClick={clearCompleted}
+              mode={mode}>
               Clear Completed
             </S.Button>
           </S.FooterContent>

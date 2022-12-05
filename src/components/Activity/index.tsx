@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import * as S from './styles';
 
-import lightMode from '../../assets/icon-cross.svg';
 import check from '../../assets/icon-check.svg';
 import { updateStatus } from '../../services/updateActivity';
 import { useContext, useState } from 'react';
 import { ActivitiesContext } from '../../context/ActivityContext';
+import { ModesContext } from '../../context/ModesContext';
 
 
 interface Props {
@@ -18,6 +18,7 @@ interface Props {
 function Activity({children, id, status, borderRadius}: Props) {
   const [statusController, setStatusController] = useState(status);
   const {activities, setActivities} = useContext(ActivitiesContext);
+  const {mode} = useContext(ModesContext);
 
   const handleStatusUpdate = async () => {
     if (id) {
@@ -54,11 +55,14 @@ function Activity({children, id, status, borderRadius}: Props) {
   };
 
   return (
-    <S.Container borderRadius={borderRadius}>
+    <S.Container borderRadius={borderRadius} mode={mode}>
       <S.IconBackground
         status={statusController === 1 ? true : false}
-        onClick={handleStatusUpdate}>
-        <S.Icon status={statusController === 1 ? true : false}>
+        onClick={handleStatusUpdate}
+        mode={mode}>
+        <S.Icon
+          status={statusController === 1 ? true : false}
+          mode={mode}>
           {
             statusController === 1 && (
               <img src={check} />
