@@ -74,6 +74,7 @@ export function ActivityList() {
       setActivities(response);
       setDisplayActivity(response);
     });
+    alert('This website is just a placeholder. To get it functional, is important to get the api online [https://github.com/enzobocalon/todo-v2-api]');
   }, []);
 
   return (
