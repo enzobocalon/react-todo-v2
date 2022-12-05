@@ -62,5 +62,16 @@ export const Content = styled.div`
     max-width: 18px;
     margin-right: 12px;
     cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transition: all .3s ease;
+  }
+
+  &:hover{
+    svg{
+      opacity: 1;
+      pointer-events: all;
+      transition: all .3s ease;
+    }
   }
 `;
