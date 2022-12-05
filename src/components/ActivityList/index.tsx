@@ -30,7 +30,7 @@ export function ActivityList() {
     }
   };
 
-  const handleDelete = async (id: string, canBeDeleted: boolean) => {
+  const handleDelete = (id: string, canBeDeleted: boolean) => {
     if (!canBeDeleted) {
       alert('Design messages cannot be deleted.');
       return;

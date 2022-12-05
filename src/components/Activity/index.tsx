@@ -20,7 +20,7 @@ function Activity({children, id, status, borderRadius}: Props) {
   const {activities, setActivities} = useContext(ActivitiesContext);
   const {mode} = useContext(ModesContext);
 
-  const handleStatusUpdate = async () => {
+  const handleStatusUpdate = () => {
     if (id) {
       if (status === 0) {
         updateStatus(id, 1);
