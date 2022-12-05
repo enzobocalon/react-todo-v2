@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const getActivities = async () => {
-  const response = await axios.get('http://localhost:3001');
+  const response = await axios.get(import.meta.env.VITE_API as string);
   if (response) {
     return response.data;
   } else {
