@@ -106,7 +106,9 @@ export function ActivityList() {
             <span>{counter} items left</span>
           </S.FooterContent>
 
-          <S.FooterContent>
+          <S.FooterContent
+            id="options"
+            mode={mode}>
             <S.Button
               active={active === 0 ? true : false}
               weight='700'

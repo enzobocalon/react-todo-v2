@@ -14,6 +14,7 @@ export const Container = styled.main<Props>`
   position: relative;
   height: 75vh;
   background-color: ${props => props.mode ? 'hsl(235, 21%, 11%)' : 'hsl(236, 33%, 92%)'};
+  transition: all .3s ease;
 `;
 
 export const ListContainer = styled.section<Props>`
@@ -24,6 +25,7 @@ export const ListContainer = styled.section<Props>`
   top: -29.5px;
   position: absolute;
   border-radius: 8px;
+  transition: all .3s ease;
 
   @media screen and (max-width: 768px) {
     width: calc(100% - 48px);
@@ -44,23 +46,50 @@ export const Text = styled.p<Props>`
   color: ${props => props.mode ? 'hsl(234, 39%, 85%)':'hsl(236, 9%, 61%)'};
   opacity: ${props => props.status === 1 ? '.6' : '1'};
   text-decoration: ${props => props.status === 1 ? 'line-through' : 'none'};
+  transition: all .3s ease;
 `;
 
 export const Footer = styled.div<Props>`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
   padding: 12px 24px;
-  border-top: 1px solid ${props => props.mode ? 'hsl(237, 14%, 26%)' : 'hsl(235, 19%, 35%)'};
+  border-top: 1px solid ${props => props.mode ? 'hsl(237, 14%, 26%)' : 'hsl(233, 11%, 84%)'};
+  transition: all .3s ease;
 `;
 
 export const FooterContent = styled.div<Props>`
   display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
+  position: relative;
+  transition: all .3s ease;
+
 
   span {
     color: ${props => props.mode ? 'hsl(233, 14%, 35%)':'hsl(236, 9%, 61%)'};
     font-size: 14px;
+    transition: all .3s ease;
+  }
+
+  @media screen and (max-width: 500px) {
+    &#options {
+      position: absolute;
+      bottom: -75px;
+      left: 0;
+      padding: 1rem;
+      background-color: ${props => props.mode ? 'hsl(235, 24%, 19%)' : 'hsl(0, 0%, 98%)'};
+      width: 100%;
+      border-radius: 8px;
+      display: flex;
+      justify-content: center;
+      transition: all .3s ease;
+
+      & > button {
+        font-size: 1rem;
+      }
+    }
   }
 `;
 

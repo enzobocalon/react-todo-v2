@@ -13,7 +13,7 @@ export const Container = styled.div<Props>`
   align-items: center;
 
   &:not(:last-of-type) {
-    border-bottom: 1px solid hsl(237, 14%, 26%);
+    border-bottom: 1px solid ${props => props.mode ? 'hsl(237, 14%, 26%)' : 'hsl(233, 11%, 84%)'};
   }
 `;
 
@@ -22,7 +22,7 @@ export const IconBackground = styled.div<Props>`
   min-height: 30px;
   border-radius: 50%;
   margin: 0 0 0 12px;
-  background-color: ${props => props.mode ? 'hsl(233, 14%, 35%)' : 'hsl(236, 9%, 61%)'};
+  background-color: ${props => props.mode ? 'hsl(233, 14%, 35%)' : 'hsl(233, 11%, 84%)'};
   background-position: 10px;
   transition: all .3s ease;
 
