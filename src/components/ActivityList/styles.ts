@@ -4,6 +4,7 @@ interface Props {
   active?: boolean;
   weight?: '400' | '700';
   mode?: boolean;
+  status?: number;
 }
 
 export const Container = styled.main<Props>`
@@ -41,6 +42,8 @@ export const List = styled.div`
 export const Text = styled.p<Props>`
   padding: 1rem;
   color: ${props => props.mode ? 'hsl(234, 39%, 85%)':'hsl(236, 9%, 61%)'};
+  opacity: ${props => props.status === 1 ? '.6' : '1'};
+  text-decoration: ${props => props.status === 1 ? 'line-through' : 'none'};
 `;
 
 export const Footer = styled.div<Props>`

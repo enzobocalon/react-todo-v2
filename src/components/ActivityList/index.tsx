@@ -86,7 +86,9 @@ export function ActivityList() {
                 key={activity._id}
                 status={activity.status}
                 id={activity._id}>
-                <S.Text mode={mode}>{activity.message}</S.Text>
+                <S.Text
+                  mode={mode}
+                  status={activity.status}>{activity.message}</S.Text>
                 <DeleteIcon
                   stroke={mode ? 'hsl(233, 14%, 35%)' : 'hsl(235, 19%, 35%)'}
                   onClick={() => handleDelete(activity._id, activity.isDeletable)}/>
