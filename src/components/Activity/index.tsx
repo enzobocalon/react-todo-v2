@@ -21,37 +21,15 @@ function Activity({children, id, status, borderRadius}: Props) {
   const {mode} = useContext(ModesContext);
 
   const handleStatusUpdate = () => {
-    if (id) {
-      if (status === 0) {
-        updateStatus(id, 1);
-        setStatusController(1);
-        // Its used to control the count when user clicks to check
-        const updatedStatus = activities?.map(data => {
-          if (data._id === id) {
-            return {...data, status: 1};
-          }
+    if (!id) return;
 
-          return data;
-        });
-        setActivities(updatedStatus!);
-        return;
-      }
+    updateStatus(id, status === 0 ? 1 : 0);
+    setStatusController(status === 0 ? 1 : 0);
 
-      if (status === 1) {
-        updateStatus(id, 0);
-        setStatusController(0);
-        // Its used to control the count when user clicks to uncheck
-        const updatedStatus = activities?.map(data => {
-          if (data._id === id) {
-            return {...data, status: 0};
-          }
-
-          return data;
-        });
-        setActivities(updatedStatus!);
-        return;
-      }
-    }
+    const updatedStatus = activities?.map(data => {
+      return data._id === id ? {...data, status: status === 0 ? 1 : 0} : data;
+    });
+    setActivities(updatedStatus!);
   };
 
   return (
