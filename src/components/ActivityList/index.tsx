@@ -42,15 +42,10 @@ export function ActivityList() {
   };
 
   const countLeftItems = () => {
-    let count = 0;
-    if (activities) {
-      activities.map(data => {
-        if (data.status === 0) {
-          count++;
-        }
-      });
-      setCounter(count);
-    }
+    if (!activities) return;
+
+    const activeItems = activities.filter(data => data.status === 0);
+    setCounter(activeItems.length);
   };
 
   const clearCompleted = () => {
